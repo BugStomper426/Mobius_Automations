@@ -3,15 +3,15 @@ import time as time
 
 def mobius_txt_automation():
     # --- Step 1. Read the Excel file with DOC# values ---
-    input_excel = 'Example_Input_Doc.xlsx'
+    input_excel = 'Example_Input_Doc.xlsx' #Jarvis: Grab from Jarvis Variable
     # input_excel = 'Input_Doc.xlsx'
-    df_input = pd.read_excel(input_excel)
+    df_input = pd.read_excel(input_excel) #Jarvis: Will be passed directly via Jarvis Variable
     doc_list = df_input['DOC#'].astype(str).tolist()
     # print(doc_list)
 
     # --- Step 2. Read the raw text file and prepare to parse it ---
     # with open('Raw_TXT_File.TXT', 'r') as f:
-    with open('RAW_TXT_TEST.TXT', 'r') as f:
+    with open('RAW_TXT_TEST.TXT', 'r') as f: #Jarvis: Will be passed directly as File From Jarvis Variable
         lines = f.readlines()
 
     doc_rel_map = {}
@@ -43,7 +43,7 @@ def mobius_txt_automation():
 
     # --- Step 3. Create and write the output ---
     output_df = pd.DataFrame(list(doc_rel_map.items()), columns=['DOC#', 'REL#'])
-    output_df.to_excel('Example_Output_Doc.xlsx', index=False)
+    output_df.to_excel('Example_Output_Doc.xlsx', index=False) #Possible output to be handled by Jarvis
 
 if __name__ == '__main__':
     start_time = time.time()
