@@ -2,15 +2,15 @@ import pandas as pd
 
 def mobius_txt_automation():
     # --- Step 1. Read the Excel file with DOC# values ---
-    # input_excel = 'Example_Input_Doc.xlsx'
-    input_excel = 'Input_Doc.xlsx'
+    input_excel = 'Example_Input_Doc.xlsx'
+    # input_excel = 'Input_Doc.xlsx'
     df_input = pd.read_excel(input_excel)
     doc_list = df_input['DOC#'].astype(str).tolist()
     # print(doc_list)
 
     # --- Step 2. Read the raw text file and prepare to parse it ---
     # with open('Raw_TXT_File.TXT', 'r') as f:
-    with open('Raw_TXT_File_original.TXT', 'r') as f:
+    with open('RAW_TXT_TEST.TXT', 'r') as f:
         lines = f.readlines()
 
     doc_rel_map = {}
