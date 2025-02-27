@@ -1,4 +1,5 @@
 import pandas as pd
+import time as time
 
 def mobius_txt_automation():
     # --- Step 1. Read the Excel file with DOC# values ---
@@ -51,4 +52,8 @@ def mobius_txt_automation():
     output_df.to_excel('Example_Output_Doc.xlsx', index=False)
 
 if __name__ == '__main__':
+    start_time = time.time()
     mobius_txt_automation()
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print("Elapsed Time: ", elapsed_time)
