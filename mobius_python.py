@@ -2,13 +2,15 @@ import pandas as pd
 
 def mobius_txt_automation():
     # --- Step 1. Read the Excel file with DOC# values ---
-    input_excel = 'Example_Input_Doc.xlsx'
+    # input_excel = 'Example_Input_Doc.xlsx'
+    input_excel = 'Input_Doc.xlsx'
     df_input = pd.read_excel(input_excel)
     doc_list = df_input['DOC#'].astype(str).tolist()
-    print(doc_list)
+    # print(doc_list)
 
     # --- Step 2. Read the raw text file and prepare to parse it ---
-    with open('Raw_TXT_File.TXT', 'r') as f:
+    # with open('Raw_TXT_File.TXT', 'r') as f:
+    with open('Raw_TXT_File_original.TXT', 'r') as f:
         lines = f.readlines()
 
     doc_rel_map = {}
@@ -19,9 +21,6 @@ def mobius_txt_automation():
 
     for line in lines:
         line = line.strip()  # Remove leading/trailing whitespace
-        # if test_index == 0:
-        #     print(line)
-        #     test_index += 1
         if not line:
             continue
 
@@ -36,7 +35,7 @@ def mobius_txt_automation():
 
         # Once the header is found, process subsequent lines as data rows
         if header_found and len(tokens) > max(doc_index, rel_index):
-            print(f"doc_index: {doc_index}, rel_index: {rel_index}")
+            # print(f"doc_index: {doc_index}, rel_index: {rel_index}")
             doc_value = tokens[doc_index - 1] #TKG98PJ each row following header row is not of equal length
             # print(f"doc_value: {doc_value}")
             rel_value = tokens[rel_index - 1] #TKG98PJ each row following header row is not of equal length
